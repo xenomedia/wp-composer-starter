@@ -1,0 +1,52 @@
+{
+    "name": "WP Composer Starter",
+    "description": "WordPress and default plugins and themes installed with Composer.",
+    "type": "project",
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "Xeno Media, Inc.",
+            "email": "contact@xenomedia.com",
+            "homepage": "https://www.xenomedia.com"
+        }
+    ],
+    "repositories":[
+        {
+            "type":"composer",
+            "url":"https://wpackagist.org"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+    "sort-packages": true
+    },
+    "require": {
+        "composer/installers": "^1.2",
+        "drupal-composer/preserve-paths": "0.1.*",
+        "johnpbloch/wordpress-core-installer": "^1.0",
+        "johnpbloch/wordpress-core": "dev-master",
+        "wpackagist-plugin/block-bad-queries": "*",
+        "wpackagist-plugin/cloudflare": "*",
+        "wpackagist-plugin/duplicate-post": "*",
+        "wpackagist-plugin/sucuri-scanner": "*",
+        "wpackagist-plugin/wordpress-seo": "*",
+        "wpackagist-plugin/wp-cfm": "*",
+        "wpackagist-plugin/wp-smushit": "*",
+        "wpackagist-plugin/wp-super-cache": "*"
+    },
+    "require-dev": {
+        "wpackagist-plugin/monster-widget": "*",
+        "wpackagist-plugin/theme-check": "*",
+        "wpackagist-plugin/user-switching": "*"
+    },
+    "extra": {
+        "installer-paths": {
+            "www/wp-content/plugins/{$name}/": ["type:wordpress-plugin"],
+            "www/wp-content/themes/{$name}/": ["type:wordpress-theme"]
+        },
+        "preserve-paths": [
+        ],
+        "wordpress-install-dir": "www"
+    }
+}
