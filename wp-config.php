@@ -176,7 +176,7 @@ define('DB_COLLATE', '');
 // register_theme_directory( dirname( __FILE__ ) . '/themes-dev' );
 
 // Prevent users from editing themes and plugins via the UI
-define( 'DISALLOW_FILE_MODS', false ); // Warning: this hides access to "add new plugins" functionality
+define( 'DISALLOW_FILE_MODS', true ); // Warning: this hides access to "add new plugins" functionality
 define( 'DISALLOW_FILE_EDIT', true );
 
 // Cron system
