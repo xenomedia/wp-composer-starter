@@ -227,8 +227,6 @@ define('BLOG_ID_CURRENT_SITE', 1);
 
 // Where to redirect users stumbling on a 404 website
 define( 'NOBLOGREDIRECT', 'http://mainwebsite.com' );
-
-
 */
 
 
@@ -250,15 +248,15 @@ define( 'CUSTOM_USER_META_TABLE', $table_prefix.'peepmeta' );
 // More Cron
 define( 'WP_CRON_LOCK_TIMEOUT', 120 ); // cron repeat interval
 define( 'ALTERNATE_WP_CRON', true ); // Issues with cron? Try this setting as a last resort.
+*/
 
 // Auto-updates
 define( 'AUTOMATIC_UPDATER_DISABLED', true );  // Disable all automatic updates
-define( 'WP_AUTO_UPDATE_CORE', false ); // Disable all core updates
-define( 'WP_AUTO_UPDATE_CORE', true ); // Enable all core updates, including minor and major
-define( 'WP_AUTO_UPDATE_CORE', 'minor' ); // Enable core updates for minor releases (default)
-define( 'DO_NOT_UPGRADE_GLOBAL_TABLES', true ); // Disable DB Tables auto-update
+# define( 'WP_AUTO_UPDATE_CORE', false ); // Disable all core updates
+# define( 'WP_AUTO_UPDATE_CORE', true ); // Enable all core updates, including minor and major
+# define( 'WP_AUTO_UPDATE_CORE', 'minor' ); // Enable core updates for minor releases (default)
+# define( 'DO_NOT_UPGRADE_GLOBAL_TABLES', true ); // Disable DB Tables auto-update
 
-*/
 
 /*  -------------------------- STOP EDITING PAST THIS POINT  --------------------- */
 $table_prefix = TABLE_PREFIX;
