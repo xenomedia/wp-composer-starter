@@ -47,6 +47,6 @@
         },
         "preserve-paths": [
         ],
-        "wordpress-install-dir": "www"
+        "wordpress-install-dir": "web"
     }
 }
