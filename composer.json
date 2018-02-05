@@ -42,8 +42,8 @@
     },
     "extra": {
         "installer-paths": {
-            "www/wp-content/plugins/{$name}/": ["type:wordpress-plugin"],
-            "www/wp-content/themes/{$name}/": ["type:wordpress-theme"]
+            "web/wp-content/plugins/{$name}/": ["type:wordpress-plugin"],
+            "web/wp-content/themes/{$name}/": ["type:wordpress-theme"]
         },
         "preserve-paths": [
         ],
