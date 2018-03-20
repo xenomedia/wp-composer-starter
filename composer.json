@@ -1,54 +1,118 @@
 {
-    "name": "WP Composer Starter",
-    "description": "WordPress and default plugins and themes installed with Composer.",
-    "type": "project",
-    "license": "GPL-2.0+",
-    "authors": [
-        {
-            "name": "Xeno Media, Inc.",
-            "email": "contact@xenomedia.com",
-            "homepage": "https://www.xenomedia.com"
-        }
-    ],
-    "repositories":[
-        {
-            "type":"composer",
-            "url":"https://wpackagist.org"
-        }
-    ],
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "require": {
-        "composer/installers": "^1.2",
-        "drupal-composer/preserve-paths": "0.1.*",
-        "johnpbloch/wordpress-core-installer": "^1.0",
-        "johnpbloch/wordpress-core": "dev-master",
-        "wpackagist-plugin/block-bad-queries": "*",
-        "wpackagist-plugin/cloudflare": "*",
-        "wpackagist-plugin/duplicate-post": "*",
-        "wpackagist-plugin/sucuri-scanner": "*",
-        "wpackagist-plugin/wordpress-seo": "*",
-        "wpackagist-plugin/wp-cfm": "*",
-        "wpackagist-plugin/wp-smushit": "*",
-        "wpackagist-plugin/wp-super-cache": "*"
-    },
-    "require-dev": {
-        "wpackagist-plugin/monster-widget": "*",
-        "wpackagist-plugin/theme-check": "*",
-        "wpackagist-plugin/user-switching": "*"
-    },
-    "extra": {
-        "installer-paths": {
-            "web/wp-content/plugins/{$name}/": ["type:wordpress-plugin"],
-            "web/wp-content/themes/{$name}/": ["type:wordpress-theme"]
-        },
-        "preserve-paths": [
-        ],
-        "wordpress-install-dir": "web"
-    },
-    "config": {
-        "optimize-autoloader": true,
-        "preferred-install": "dist",
-        "sort-packages": true
+  "name": "WP Composer Starter",
+  "description": "WordPress and default plugins and themes installed with Composer.",
+  "type": "project",
+  "keywords": [],
+  "minimum-stability": "dev",
+  "license": "GPL-2.0+",
+  "authors": [
+    {
+      "name": "Xeno Media, Inc.",
+      "email": "contact@xenomedia.com",
+      "homepage": "https://www.xenomedia.com"
     }
+  ],
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/pantheon-systems/wordpress-composer"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/xenomedia/advanced-custom-fields-pro"
+    }
+  ],
+  "require": {
+    "composer/installers": "^1.3.0",
+    "pantheon-systems/wordpress-composer": "^4.8.2",
+    "roots/wp-password-bcrypt": "^1.0.0",
+    "rvtraveller/qs-composer-installer": "^1.1",
+    "vlucas/phpdotenv": "^2.4.0",
+    "wpackagist-plugin/advanced-sidebar-menu": "*",
+    "wpackagist-plugin/block-bad-queries": "*",
+    "wpackagist-plugin/disable-comments": "*",
+    "wpackagist-plugin/display-posts-shortcode": "dev-trunk",
+    "wpackagist-plugin/pantheon-advanced-page-cache": "^0.1.4",
+    "wpackagist-plugin/simple-redirect": "*",
+    "wpackagist-plugin/sucuri-scanner": "*",
+    "wpackagist-plugin/svg-support": "*",
+    "wpackagist-plugin/wordpress-seo": "*",
+    "wpackagist-plugin/wp-cfm": "*",
+    "wpackagist-plugin/wp-native-php-sessions": "^0.6.0",
+    "wpackagist-plugin/wp-smushit": "*",
+    "wpackagist-plugin/wp-super-cache": "*",
+    "wpackagist-theme/twentyseventeen": "^1.1",
+    "wpackagist-theme/understrap": "*",
+    "xenomedia/advanced-custom-fields-pro": "*"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-master",
+    "paulgibbs/behat-wordpress-extension": "0.8.0",
+    "behat/mink-goutte-driver": "^1.2",
+    "behat/mink-selenium2-driver": "^1.3",
+    "squizlabs/php_codesniffer": "^2.9.0",
+    "wp-coding-standards/wpcs": "dev-master",
+    "phpunit/phpunit": "^6.1",
+    "brain/monkey": "^1.4"
+  },
+  "config": {
+    "vendor-dir": "vendor",
+    "preferred-install": {
+      "pantheon-systems/*": "dist",
+      "xenomedia/*": "dist",
+      "*": "dist"
+    },
+    "optimize-autoloader": true,
+    "sort-packages": true,
+    "platform": {
+      "php": "7.0"
+    }
+  },
+  "extra": {
+    "wordpress-install-dir": "web/wp",
+    "build-env": {
+      "install-cms": [
+        "wp core install --title={site-name} --url={site-url} --admin_user={account-name} --admin_email={account-mail} --admin_password={account-pass}",
+        "wp option update permalink_structure '/%postname%/'"
+      ]
+    },
+    "installer-paths": {
+      "web/wp-content/plugins/{$name}/": ["type:wordpress-plugin"],
+      "web/wp-content/themes/{$name}/": ["type:wordpress-theme"],
+      "web/private/scripts/quicksilver/{$name}/": ["type:quicksilver-script"]
+    }
+  },
+  "scripts": {
+    "build-assets": [
+      "@prepare-for-pantheon",
+      "composer install --no-dev --no-ansi --no-interaction --optimize-autoloader --no-progress"
+    ],
+    "prepare-for-pantheon": "WordPressProject\\composer\\ScriptHandler::prepareForPantheon",
+    "cleanup": [
+      "./scripts/composer/cleanup-composer"
+    ],
+    "post-install-cmd": [
+      "@cleanup",
+      "WordPressProject\\composer\\ScriptHandler::createRequiredFiles"
+    ],
+    "post-update-cmd": [
+      "@cleanup",
+      "WordPressProject\\composer\\ScriptHandler::createRequiredFiles"
+    ],
+    "post-create-project-cmd": [
+      "@cleanup",
+      "WordPressProject\\composer\\ScriptHandler::createRequiredFiles"
+    ],
+    "code-sniff": [
+      "./vendor/bin/phpcs --config-set installed_paths ./vendor/wp-coding-standards/wpcs",
+      "./vendor/bin/phpcs ./web/wp-content"
+    ],
+    "unit-test": [
+      "./vendor/bin/phpunit tests/unit/*"
+    ]
+  }
 }
