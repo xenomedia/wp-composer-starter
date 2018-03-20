@@ -4,6 +4,14 @@
   "type": "project",
   "keywords": [],
   "minimum-stability": "dev",
+  "license": "GPL-2.0+",
+  "authors": [
+    {
+      "name": "Xeno Media, Inc.",
+      "email": "contact@xenomedia.com",
+      "homepage": "https://www.xenomedia.com"
+    }
+  ],
   "repositories": [
     {
       "type": "composer",
