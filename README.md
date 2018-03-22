@@ -1,5 +1,7 @@
 # WP Composer Starter
-WordPress and default plugins and themes installed with Composer.
+Composer file for managing WordPress core, plugins and themes for non-Pantheon hosting.
 
 ## Installation
-Download locally and run `composer install`
+Download locally
+Copy the composer.json file to your new project's repo
+Run `composer install`
