@@ -5,5 +5,5 @@ Master branch is intentionally left empty.
 
 ## Installation
 * Clone this repository
-* Switch to the branch for the environment whjere you are going to host
+* Switch to the branch for the environment where it will be hosted
 * Follow the instructions in that branch's Read me
