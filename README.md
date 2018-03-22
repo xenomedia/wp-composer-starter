@@ -1,5 +1,9 @@
 # WP Composer Starter
-WordPress and default plugins and themes installed with Composer.
+WordPress core, plugins and themes installed with Composer.
+
+Master branch is intentionally left empty.
 
 ## Installation
-Download locally and run `composer install`
+* Clone this repository
+* Switch to the branch for the environment whjere you are going to host
+* Follow the instructions in that branch's Read me
