@@ -4,7 +4,10 @@
 Xeno Media created repository that uses Docker, Composer, WordPress, Jenkins and Pantheon.io hosting.
 
 ## Setup
-Download locally, update words/links and run `composer install`
+* Download locally
+* Copy the composer.json file to your new project's repo
+* Update words in the Read me and composer.json files
+* Run composer install
 
 ## Workflow
 Work locally and follow a normal git workflow using a new branch cloned from master.  Merging code into the master branch can only be done with Pull requests.  To test and deploy your changes, follow these steps.
@@ -12,7 +15,7 @@ Work locally and follow a normal git workflow using a new branch cloned from mas
 Keep your branch names 11 characters or less.  Pantheon has this limit on multidev environment names.
 
 * Push your branch to Github `git push origin <branch-name>`
-  * This will trigger a Job on Jeknins that will build a MulitDev on Pantheon
+  * This will trigger a Job on Jenkins that will build a MulitDev on Pantheon
   * There will be a slack alert in #SITENAME-deploys with a link to the site when it is ready
 * Test at http://`<branch-name>`-SITENAME.pantheonsite.io/
 * Visit repository on github `hub browse`
